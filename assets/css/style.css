@@ -383,11 +383,6 @@ section h2 {
 }
 .news-date { color: var(--color-text-muted); white-space: nowrap; min-width: 3rem; }
 
-/* === Contact === */
-.contact-block { font-size: 0.95rem; }
-.contact-block p + p { margin-top: 0.5rem; }
-.contact-links { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
-
 /* === Links === */
 a { color: var(--color-accent); }
 a:hover { color: var(--color-accent-hover); }

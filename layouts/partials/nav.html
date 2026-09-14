@@ -9,9 +9,9 @@
       </svg>
     </button>
     <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="{{ site.Home.RelPermalink }}" {{ if .IsHome }}aria-current="page"{{ end }}>About</a></li>
       <li><a href="{{ "research/" | relURL }}" {{ if eq .RelPermalink (relURL "research/") }}aria-current="page"{{ end }}>Research</a></li>
       <li><a href="{{ "cv/" | relURL }}" {{ if eq .RelPermalink (relURL "cv/") }}aria-current="page"{{ end }}>CV</a></li>
-      <li><a href="{{ "contact/" | relURL }}" {{ if eq .RelPermalink (relURL "contact/") }}aria-current="page"{{ end }}>Contact</a></li>
     </ul>
   </div>
 </nav>
