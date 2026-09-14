@@ -1,0 +1,103 @@
+{{ define "main" }}
+
+<div class="page-header">
+  <h1>{{ .Title }}</h1>
+</div>
+
+{{/* ── Papers ── */}}
+{{ $papers := hugo.Data.papers }}
+{{ $working  := where $papers "type" "working-paper" }}
+{{ $wip      := where $papers "type" "work-in-progress" }}
+{{ $published := where $papers "type" "published" }}
+
+{{ if $working }}
+<div class="paper-group">
+  <h3>Working Papers</h3>
+  {{ range $working }}
+  <article class="paper-item">
+    {{ if .pdf }}
+      <a class="paper-title" href="{{ .pdf | relURL }}">{{ .title }}</a>
+    {{ else if .link }}
+      <a class="paper-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
+    {{ else }}
+      <span class="paper-title-plain">{{ .title }}</span>
+    {{ end }}
+    {{ if .authors }}
+    <p class="paper-authors">
+      {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+    </p>
+    {{ end }}
+    {{ with .abstract }}<p class="paper-abstract">{{ . }}</p>{{ end }}
+  </article>
+  {{ end }}
+</div>
+{{ end }}
+
+{{ if $wip }}
+<div class="paper-group">
+  <h3>Works in Progress</h3>
+  {{ range $wip }}
+  <article class="paper-item">
+    <span class="paper-title-plain">{{ .title }}</span>
+    {{ if .authors }}
+    <p class="paper-authors">
+      {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+    </p>
+    {{ end }}
+    {{ with .abstract }}<p class="paper-abstract">{{ . }}</p>{{ end }}
+  </article>
+  {{ end }}
+</div>
+{{ end }}
+
+{{ if $published }}
+<div class="paper-group">
+  <h3>Publications</h3>
+  {{ range $published }}
+  <article class="paper-item">
+    {{ if .link }}
+      <a class="paper-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
+    {{ else if .pdf }}
+      <a class="paper-title" href="{{ .pdf | relURL }}">{{ .title }}</a>
+    {{ else }}
+      <span class="paper-title-plain">{{ .title }}</span>
+    {{ end }}
+    {{ if .authors }}
+    <p class="paper-authors">
+      {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+    </p>
+    {{ end }}
+    <p class="paper-meta">
+      {{ .venue }}{{ with .volume }}, {{ . }}{{ end }}{{ with .pages }}: {{ . }}{{ end }}{{ with .year }}, {{ . }}{{ end }}
+    </p>
+    {{ with .note }}<p class="paper-note">{{ . }}</p>{{ end }}
+  </article>
+  {{ end }}
+</div>
+{{ end }}
+
+{{/* ── Policy Writing ── */}}
+{{ $policy := hugo.Data.policy }}
+{{ if $policy }}
+<section id="policy" aria-label="Policy Writing">
+  <h2>Policy Writing</h2>
+  {{ range $policy }}
+  <div class="policy-item">
+    {{ if .link }}
+      <a class="policy-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
+    {{ else }}
+      <span class="policy-title-plain">{{ .title }}</span>
+    {{ end }}
+    <p class="policy-meta">
+      {{- if .authors -}}
+        {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}.&nbsp;
+      {{- end -}}
+      {{ .venue }}{{ with .date }}, {{ . }}{{ end }}
+      {{- with .note }}&nbsp;&mdash;&nbsp;<em>{{ . }}</em>{{ end }}
+    </p>
+  </div>
+  {{ end }}
+</section>
+{{ end }}
+
+{{ end }}

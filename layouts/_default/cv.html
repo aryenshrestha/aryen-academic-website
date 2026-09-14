@@ -1,0 +1,60 @@
+{{ define "main" }}
+
+<div class="page-header">
+  <h1>{{ .Title }}</h1>
+  <a class="btn-cv" href="{{ site.Params.cv | relURL }}" target="_blank" rel="noopener">Download CV (PDF)</a>
+</div>
+
+{{/* ── Teaching ── */}}
+{{ $teaching := hugo.Data.teaching }}
+{{ if $teaching }}
+<section id="teaching" aria-label="Teaching">
+  <h2>Teaching</h2>
+  <ul class="teaching-list" role="list">
+    {{ range $teaching }}
+    <li class="teaching-item">
+      <span class="teaching-name">
+        {{ .course }}{{ with .instructor }}&nbsp;&mdash;&nbsp;{{ . }}{{ end }}
+      </span>
+      <span class="teaching-meta">{{ .role }}, {{ .institution }}, {{ .term }}</span>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+{{/* ── Awards ── */}}
+{{ $awards := hugo.Data.awards }}
+{{ if $awards }}
+<section id="awards" aria-label="Awards and Fellowships">
+  <h2>Awards &amp; Fellowships</h2>
+  <ul class="award-list" role="list">
+    {{ range $awards }}
+    <li class="award-item">
+      <span class="award-name">
+        {{ .name }}{{ with .description }}&nbsp;&mdash;&nbsp;<span class="award-detail">{{ . }}</span>{{ end }}
+      </span>
+      <span class="award-year">{{ .institution }}, {{ .year }}</span>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+{{/* ── News ── */}}
+{{ $news := hugo.Data.news }}
+{{ if $news }}
+<section id="news" aria-label="News">
+  <h2>News</h2>
+  <ul class="news-list" role="list">
+    {{ range $news }}
+    <li class="news-item">
+      <span class="news-date">{{ .date }}</span>
+      <span>{{ .text | safeHTML }}</span>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+{{ end }}

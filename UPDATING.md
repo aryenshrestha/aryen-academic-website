@@ -48,7 +48,7 @@ Edit `content/_index.md`. The text there is the three-paragraph bio on your home
 
 ## Update your CV
 
-Replace `static/files/cv.pdf` with the new version. Keep the same filename — the download link in the nav will keep working.
+Replace `static/files/cv.pdf` with the new version. Keep the same filename — the download button on the CV page will keep working.
 
 ---
 

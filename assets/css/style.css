@@ -82,6 +82,7 @@ nav {
   transition: color 0.15s;
 }
 .nav-links a:hover { color: var(--color-accent); }
+.nav-links a[aria-current="page"] { color: var(--color-accent); font-weight: 600; }
 
 /* Hamburger */
 .nav-toggle {
@@ -141,6 +142,21 @@ section h2 {
   color: var(--color-text);
   margin-bottom: 2rem;
 }
+
+/* === Page header (Research / CV / Contact) === */
+.page-header {
+  padding-top: 4rem;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.page-header + section { padding-top: 0; }
+.paper-group + section { padding-top: 3rem; }
 
 /* === Hero === */
 .hero {
