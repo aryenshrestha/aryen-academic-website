@@ -3,13 +3,12 @@
 
 :root {
   --color-bg:        #fdfbf8;
-  --color-surface:   #f5f0eb;
-  --color-text:      #2d2926;
-  --color-text-muted:#6b6560;
-  --color-accent:    #8b4757;   /* desaturated Harvard crimson */
-  --color-accent-hover: #6b3341;
-  --color-border:    #e2ddd5;
-  --color-highlight: #f7f0f2;
+  --color-surface:   #f1f4f2;
+  --color-text:      #23262a;
+  --color-text-muted:#68716f;
+  --color-accent:    #0f6f63;   /* deep ocean teal */
+  --color-accent-hover: #0b544b;
+  --color-border:    #e4e2da;
   --nav-height:      56px;
   --max-width:       720px;
   color-scheme: light only;
@@ -132,25 +131,23 @@ main {
 
 /* === Sections === */
 section {
-  padding-top: 4rem;
+  padding-top: 5.5rem;
   scroll-margin-top: calc(var(--nav-height) + 1rem);
 }
 
 section h2 {
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--color-text);
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
 }
 
 /* === Hero === */
 .hero {
   display: flex;
   align-items: flex-start;
-  gap: 2.5rem;
-  padding-top: 3rem;
+  gap: 3rem;
+  padding-top: 4rem;
   scroll-margin-top: calc(var(--nav-height) + 1rem);
 }
 
@@ -224,15 +221,16 @@ section h2 {
 .btn-cv {
   display: inline-block;
   padding: 0.4rem 1rem;
-  background: var(--color-accent);
-  color: #fff;
+  background: transparent;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 0.875rem;
   font-weight: 500;
-  transition: background 0.15s;
+  transition: background 0.15s, color 0.15s;
 }
-.btn-cv:hover { background: var(--color-accent-hover); }
+.btn-cv:hover { background: var(--color-accent); color: #fff; }
 
 @media (max-width: 600px) {
   .hero {
@@ -260,8 +258,8 @@ section h2 {
   margin-bottom: 1.25rem;
 }
 
-.paper-item { margin-bottom: 1.25rem; }
-.paper-item + .paper-item { padding-top: 1.25rem; border-top: 1px solid var(--color-border); }
+.paper-item { margin-bottom: 1.75rem; }
+.paper-item + .paper-item { padding-top: 1.75rem; }
 
 .paper-title {
   font-weight: 500;
@@ -327,10 +325,8 @@ section h2 {
   justify-content: space-between;
   align-items: baseline;
   gap: 0.25rem 1rem;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 0.85rem 0;
 }
-.teaching-item:first-child { border-top: 1px solid var(--color-border); }
 .teaching-name { font-size: 0.95rem; }
 .teaching-meta { font-size: 0.875rem; color: var(--color-text-muted); white-space: nowrap; }
 
@@ -341,18 +337,16 @@ section h2 {
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 0.8rem 0;
   flex-wrap: wrap;
 }
-.award-item:first-child { border-top: 1px solid var(--color-border); }
 .award-name { font-size: 0.95rem; }
 .award-detail { font-size: 0.875rem; color: var(--color-text-muted); }
 .award-year { font-size: 0.875rem; color: var(--color-text-muted); white-space: nowrap; }
 
 /* === Policy Writing === */
-.policy-item { margin-bottom: 0.9rem; }
-.policy-item + .policy-item { padding-top: 0.9rem; border-top: 1px solid var(--color-border); }
+.policy-item { margin-bottom: 1.4rem; }
+.policy-item + .policy-item { padding-top: 1.4rem; }
 .policy-title {
   font-weight: 500;
   font-size: 0.95rem;
@@ -368,11 +362,9 @@ section h2 {
 .news-item {
   display: flex;
   gap: 1.25rem;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 0.8rem 0;
   font-size: 0.9rem;
 }
-.news-item:first-child { border-top: 1px solid var(--color-border); }
 .news-date { color: var(--color-text-muted); white-space: nowrap; min-width: 3rem; }
 
 /* === Contact === */
