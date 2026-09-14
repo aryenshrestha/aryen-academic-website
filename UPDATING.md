@@ -100,7 +100,7 @@ Edit `data/policy.yaml` and add an entry:
 
 ---
 
-## Change your email, tagline, or institution info
+## Change your email or institution info
 
 Edit `hugo.yaml` and update the relevant field under `params:`.
 

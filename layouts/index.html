@@ -12,7 +12,6 @@
   <div class="hero-text">
     <h1>{{ site.Params.author }}</h1>
     <p class="hero-title">{{ site.Params.description }}</p>
-    <p class="hero-tagline">{{ site.Params.tagline }}</p>
     <div class="hero-links">
       <a class="btn-cv" href="{{ "cv/" | relURL }}">CV</a>
       {{ with site.Params.linkedin }}
@@ -21,10 +20,10 @@
         LinkedIn
       </a>
       {{ end }}
-      <a class="icon-link" href="mailto:{{ site.Params.email }}" aria-label="Email">
+      <span class="icon-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-        Email
-      </a>
+        {{ site.Params.email }}
+      </span>
     </div>
   </div>
 </section>

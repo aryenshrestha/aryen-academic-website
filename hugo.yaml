@@ -3,12 +3,11 @@ title: "Aryen Shrestha"
 languageCode: en-us
 
 params:
-  description: "Incoming PhD Student, Public Policy (Economics Track), Harvard Kennedy School"
+  description: "PhD Student, Harvard Kennedy School"
   author: "Aryen Shrestha"
-  email: "aryenshrestha@fas.harvard.edu"
+  email: "aryenshrestha@g.harvard.edu"
   institution: "Harvard Kennedy School"
   department: "Public Policy (Economics Track)"
-  tagline: "I study how public policies shape housing markets, immigration, and educational opportunity."
   linkedin: "https://www.linkedin.com/in/aryen-shrestha/"
   photo: "images/photo.jpg"
   cv: "files/cv.pdf"
