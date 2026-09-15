@@ -12,23 +12,23 @@
   <div class="hero-text">
     <h1>{{ site.Params.author }}</h1>
     <p class="hero-title">{{ site.Params.description }}</p>
+
+    {{/* ── Bio ── */}}
+    {{ with .Content }}
+    <div id="bio" class="bio" aria-label="Biography">
+      {{ . }}
+    </div>
+    {{ end }}
+
+    {{/* ── CV / Contact links ── */}}
+    <div class="hero-links">
+      <a class="btn-cv" href="{{ "cv/" | relURL }}">Download CV</a>
+      <span class="icon-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        Email: {{ site.Params.email }}
+      </span>
+    </div>
   </div>
 </section>
-
-{{/* ── Bio ── */}}
-{{ with .Content }}
-<section id="bio" class="bio" aria-label="Biography">
-  {{ . }}
-</section>
-{{ end }}
-
-{{/* ── CV / Contact links ── */}}
-<div class="hero-links">
-  <a class="btn-cv" href="{{ "cv/" | relURL }}">Download CV</a>
-  <span class="icon-link">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-    Email: {{ site.Params.email }}
-  </span>
-</div>
 
 {{ end }}
