@@ -11,6 +11,7 @@ params:
   photo: "images/photo.jpg"
   cv: "files/cv.pdf"
   citizenship: "Nepal"
+  google_site_verification: "j2we0FbDvpvynIrkHbbp_mFb5WeSPwN2Oe0OTTIQnFk"
 
 markup:
   goldmark:
