@@ -28,7 +28,10 @@
     </p>
     {{ end }}
     {{ with .abstract }}
-    <button class="abstract-toggle" type="button" aria-expanded="false" onclick="var p=this.nextElementSibling; var show=p.hasAttribute('hidden'); if(show){p.removeAttribute('hidden'); this.textContent='Hide abstract'; this.setAttribute('aria-expanded','true');} else {p.setAttribute('hidden',''); this.textContent='Show abstract'; this.setAttribute('aria-expanded','false');}">Show abstract</button>
+    <button class="abstract-toggle" type="button" aria-expanded="false" onclick="var p=this.nextElementSibling; var show=p.hasAttribute('hidden'); var label=this.querySelector('.toggle-label'); if(show){p.removeAttribute('hidden'); label.textContent='Hide abstract'; this.setAttribute('aria-expanded','true');} else {p.setAttribute('hidden',''); label.textContent='Show abstract'; this.setAttribute('aria-expanded','false');}">
+      <span class="toggle-label">Show abstract</span>
+      <svg class="chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
     <p class="paper-abstract" hidden>{{ . }}</p>
     {{ end }}
   </article>
@@ -54,7 +57,10 @@
     </p>
     {{ end }}
     {{ with .abstract }}
-    <button class="abstract-toggle" type="button" aria-expanded="false" onclick="var p=this.nextElementSibling; var show=p.hasAttribute('hidden'); if(show){p.removeAttribute('hidden'); this.textContent='Hide abstract'; this.setAttribute('aria-expanded','true');} else {p.setAttribute('hidden',''); this.textContent='Show abstract'; this.setAttribute('aria-expanded','false');}">Show abstract</button>
+    <button class="abstract-toggle" type="button" aria-expanded="false" onclick="var p=this.nextElementSibling; var show=p.hasAttribute('hidden'); var label=this.querySelector('.toggle-label'); if(show){p.removeAttribute('hidden'); label.textContent='Hide abstract'; this.setAttribute('aria-expanded','true');} else {p.setAttribute('hidden',''); label.textContent='Show abstract'; this.setAttribute('aria-expanded','false');}">
+      <span class="toggle-label">Show abstract</span>
+      <svg class="chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
     <p class="paper-abstract" hidden>{{ . }}</p>
     {{ end }}
   </article>

@@ -343,7 +343,9 @@ section h2 {
 }
 
 .abstract-toggle {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   margin-top: 0.5rem;
   padding: 0;
   background: none;
@@ -352,9 +354,14 @@ section h2 {
   font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
-  text-decoration: underline;
 }
 .abstract-toggle:hover { color: var(--color-accent-hover); }
+.abstract-toggle .toggle-label { text-decoration: underline; }
+.abstract-toggle .chevron {
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+.abstract-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
 
 .paper-abstract {
   margin-top: 0.65rem;
