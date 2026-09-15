@@ -24,7 +24,11 @@
     {{ end }}
     {{ if .authors }}
     <p class="paper-authors">
-      {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+      {{- if gt (len .authors) 1 -}}
+        ({{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}})
+      {{- else -}}
+        {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+      {{- end -}}
     </p>
     {{ end }}
     {{ with .abstract }}
@@ -53,7 +57,11 @@
     {{ end }}
     {{ if .authors }}
     <p class="paper-authors">
-      {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+      {{- if gt (len .authors) 1 -}}
+        ({{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}})
+      {{- else -}}
+        {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+      {{- end -}}
     </p>
     {{ end }}
     {{ with .abstract }}
@@ -83,7 +91,11 @@
     {{ end }}
     {{ if .authors }}
     <p class="paper-authors">
-      {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+      {{- if gt (len .authors) 1 -}}
+        ({{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}})
+      {{- else -}}
+        {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+      {{- end -}}
     </p>
     {{ end }}
     <p class="paper-meta">
