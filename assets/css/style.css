@@ -160,7 +160,6 @@ section h2 {
 }
 
 .page-header + section { padding-top: 0; }
-.paper-group + section { padding-top: 3rem; }
 
 /* === Hero === */
 .hero {
@@ -276,27 +275,6 @@ section h2 {
 }
 
 /* === Research === */
-.paper-group { margin-bottom: 2.5rem; }
-.paper-group h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--color-text-muted);
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-.paper-group h3::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  flex-shrink: 0;
-}
-
 .paper-item { margin-bottom: 1.75rem; }
 .paper-item + .paper-item { padding-top: 1.75rem; }
 

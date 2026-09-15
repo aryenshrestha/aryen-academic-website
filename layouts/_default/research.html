@@ -11,8 +11,8 @@
 {{ $published := where $papers "type" "published" }}
 
 {{ if $working }}
-<div class="paper-group">
-  <h3>Working Papers</h3>
+<section id="working-papers" aria-label="Working Papers">
+  <h2>Working Papers</h2>
   {{ range $working }}
   <article class="paper-item">
     {{ if .pdf }}
@@ -36,12 +36,12 @@
     {{ end }}
   </article>
   {{ end }}
-</div>
+</section>
 {{ end }}
 
 {{ if $wip }}
-<div class="paper-group">
-  <h3>Works in Progress</h3>
+<section id="works-in-progress" aria-label="Works in Progress">
+  <h2>Works in Progress</h2>
   {{ range $wip }}
   <article class="paper-item">
     {{ if .pdf }}
@@ -65,12 +65,12 @@
     {{ end }}
   </article>
   {{ end }}
-</div>
+</section>
 {{ end }}
 
 {{ if $published }}
-<div class="paper-group">
-  <h3>Publications</h3>
+<section id="publications" aria-label="Academic Publications">
+  <h2>Academic Publications</h2>
   {{ range $published }}
   {{ $p := . }}
   <article class="paper-item">
@@ -96,7 +96,7 @@
     {{ end }}
   </article>
   {{ end }}
-</div>
+</section>
 {{ end }}
 
 {{/* ── Policy Writing ── */}}
