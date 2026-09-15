@@ -370,33 +370,6 @@ section h2 {
   font-style: italic;
 }
 
-/* === Teaching === */
-.teaching-list { list-style: none; }
-.teaching-item {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.25rem 1rem;
-  padding: 0.85rem 0;
-}
-.teaching-name { font-size: 0.95rem; }
-.teaching-meta { font-size: 0.875rem; color: var(--color-text-muted); white-space: nowrap; }
-
-/* === Awards === */
-.award-list { list-style: none; }
-.award-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.8rem 0;
-  flex-wrap: wrap;
-}
-.award-name { font-size: 0.95rem; }
-.award-detail { font-size: 0.875rem; color: var(--color-text-muted); }
-.award-year { font-size: 0.875rem; color: var(--color-text-muted); white-space: nowrap; }
-
 /* === Policy Writing === */
 .policy-item { margin-bottom: 1.4rem; }
 .policy-item + .policy-item { padding-top: 1.4rem; }
@@ -409,16 +382,6 @@ section h2 {
 .policy-title:hover { text-decoration: underline; }
 .policy-title-plain { font-weight: 500; font-size: 0.95rem; }
 .policy-meta { font-size: 0.875rem; color: var(--color-text-muted); margin-top: 0.1rem; }
-
-/* === News === */
-.news-list { list-style: none; }
-.news-item {
-  display: flex;
-  gap: 1.25rem;
-  padding: 0.8rem 0;
-  font-size: 0.9rem;
-}
-.news-date { color: var(--color-text-muted); white-space: nowrap; min-width: 3rem; }
 
 /* === Links === */
 a { color: var(--color-accent); }

@@ -66,6 +66,7 @@
 <div class="paper-group">
   <h3>Publications</h3>
   {{ range $published }}
+  {{ $p := . }}
   <article class="paper-item">
     {{ if .link }}
       <a class="paper-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
@@ -82,7 +83,11 @@
     <p class="paper-meta">
       {{ .venue }}{{ with .volume }}, {{ . }}{{ end }}{{ with .pages }}: {{ . }}{{ end }}{{ with .year }}, {{ . }}{{ end }}
     </p>
-    {{ with .note }}<p class="paper-note">{{ . }}</p>{{ end }}
+    {{ with .note }}
+      <p class="paper-note">
+        {{ if $p.note_link }}<a href="{{ $p.note_link }}" target="_blank" rel="noopener">{{ . }}</a>{{ else }}{{ . }}{{ end }}
+      </p>
+    {{ end }}
   </article>
   {{ end }}
 </div>
@@ -94,6 +99,7 @@
 <section id="policy" aria-label="Policy Writing">
   <h2>Policy Writing</h2>
   {{ range $policy }}
+  {{ $p := . }}
   <div class="policy-item">
     {{ if .link }}
       <a class="policy-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
@@ -105,7 +111,7 @@
         {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}.&nbsp;
       {{- end -}}
       {{ .venue }}{{ with .date }}, {{ . }}{{ end }}
-      {{- with .note }}&nbsp;&mdash;&nbsp;<em>{{ . }}</em>{{ end }}
+      {{- with .note }}&nbsp;&mdash;&nbsp;<em>{{ if $p.note_link }}<a href="{{ $p.note_link }}" target="_blank" rel="noopener">{{ . }}</a>{{ else }}{{ . }}{{ end }}</em>{{ end }}
     </p>
   </div>
   {{ end }}

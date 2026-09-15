@@ -25,7 +25,7 @@
 
   {{/* ── CV / Contact links ── */}}
   <div class="hero-links">
-    <a class="btn-cv" href="{{ "cv/" | relURL }}">Download CV</a>
+    <a class="btn-cv" href="{{ site.Params.cv | relURL }}" target="_blank" rel="noopener">Download CV</a>
     <a class="icon-link copy-email" href="mailto:{{ site.Params.email }}" data-email="{{ site.Params.email }}" aria-label="Copy email address" onclick="event.preventDefault(); navigator.clipboard.writeText(this.dataset.email); var t=this.querySelector('.copy-text'); var orig=t.textContent; t.textContent='Copied!'; clearTimeout(this._copyTimer); this._copyTimer=setTimeout(function(){ t.textContent=orig; }, 1500);">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
       <span class="copy-text">{{ site.Params.email }}</span>
