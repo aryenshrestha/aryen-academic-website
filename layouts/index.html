@@ -4,7 +4,7 @@
 <section class="hero" id="about" aria-label="About">
   <div class="hero-photo">
     {{ if fileExists (printf "static/%s" site.Params.photo) }}
-      <img src="{{ site.Params.photo | relURL }}" alt="Photo of {{ site.Params.author }}" width="160" height="160" loading="eager">
+      <img src="{{ site.Params.photo | relURL }}" alt="Photo of {{ site.Params.author }}" width="220" height="220" loading="eager">
     {{ else }}
       <div class="photo-placeholder" aria-label="Photo of {{ site.Params.author }}">AS</div>
     {{ end }}
@@ -13,10 +13,10 @@
     <h1>{{ site.Params.author }}</h1>
     <p class="hero-title">{{ site.Params.description }}</p>
     <div class="hero-links">
-      <a class="btn-cv" href="{{ "cv/" | relURL }}">CV</a>
+      <a class="btn-cv" href="{{ "cv/" | relURL }}">Download CV</a>
       <span class="icon-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-        {{ site.Params.email }}
+        Email: {{ site.Params.email }}
       </span>
     </div>
   </div>

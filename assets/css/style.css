@@ -11,6 +11,8 @@
   --color-border:    #e4e2da;
   --nav-height:      56px;
   --max-width:       720px;
+  --hero-photo-size: 220px;
+  --hero-gap:        3rem;
   color-scheme: light only;
 }
 
@@ -163,7 +165,7 @@ section h2 {
 .hero {
   display: flex;
   align-items: flex-start;
-  gap: 3rem;
+  gap: var(--hero-gap);
   padding-top: 4rem;
   scroll-margin-top: calc(var(--nav-height) + 1rem);
 }
@@ -173,16 +175,16 @@ section h2 {
 }
 
 .hero-photo img {
-  width: 160px;
-  height: 160px;
+  width: var(--hero-photo-size);
+  height: var(--hero-photo-size);
   border-radius: 6px;
   object-fit: cover;
   display: block;
 }
 
 .photo-placeholder {
-  width: 160px;
-  height: 160px;
+  width: var(--hero-photo-size);
+  height: var(--hero-photo-size);
   border-radius: 6px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -255,7 +257,14 @@ section h2 {
 }
 
 /* === Bio === */
+.bio {
+  padding-left: calc(var(--hero-photo-size) + var(--hero-gap));
+}
 .bio p + p { margin-top: 1rem; }
+
+@media (max-width: 600px) {
+  .bio { padding-left: 0; }
+}
 
 /* === Research === */
 .paper-group { margin-bottom: 2.5rem; }
