@@ -1,0 +1,63 @@
+{{ define "main" }}
+
+{{/* ── Papers ── */}}
+{{ $papers := hugo.Data.papers }}
+{{ $working  := where $papers "type" "working-paper" }}
+{{ $wip      := where $papers "type" "work-in-progress" }}
+{{ $published := where $papers "type" "published" }}
+{{ $policy := hugo.Data.policy }}
+
+<div class="page-header">
+  <h1>{{ .Title }}</h1>
+  <nav class="section-nav" aria-label="Research sections">
+    {{ if $working }}<a href="#working-papers">Working Papers</a>{{ end }}
+    {{ if $wip }}<a href="#works-in-progress">Works in Progress</a>{{ end }}
+    {{ if $published }}<a href="#publications">Academic Publications</a>{{ end }}
+    {{ if $policy }}<a href="#policy">Policy Writing</a>{{ end }}
+  </nav>
+</div>
+
+{{ if $working }}
+<section id="working-papers" aria-label="Working Papers">
+  <h2>Working Papers</h2>
+  {{ range $working }}
+    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "abstract" .abstract) }}
+  {{ end }}
+</section>
+{{ end }}
+
+{{ if $wip }}
+<section id="works-in-progress" aria-label="Works in Progress">
+  <h2>Works in Progress</h2>
+  {{ range $wip }}
+    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "abstract" .abstract) }}
+  {{ end }}
+</section>
+{{ end }}
+
+{{ if $published }}
+<section id="publications" aria-label="Academic Publications">
+  <h2>Academic Publications</h2>
+  {{ range $published }}
+    {{ $venueLine := .venue }}
+    {{ with .volume }}{{ $venueLine = printf "%s, %v" $venueLine . }}{{ end }}
+    {{ with .pages }}{{ $venueLine = printf "%s: %v" $venueLine . }}{{ end }}
+    {{ with .year }}{{ $venueLine = printf "%s, %v" $venueLine . }}{{ end }}
+    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "venue_line" $venueLine "note" .note "note_link" .note_link) }}
+  {{ end }}
+</section>
+{{ end }}
+
+{{/* ── Policy Writing ── */}}
+{{ if $policy }}
+<section id="policy" aria-label="Policy Writing">
+  <h2>Policy Writing</h2>
+  {{ range $policy }}
+    {{ $venueLine := .venue }}
+    {{ with .date }}{{ $venueLine = printf "%s, %v" $venueLine . }}{{ end }}
+    {{ partial "paper-item.html" (dict "title" .title "pdf" "" "link" .link "authors" .authors "venue_line" $venueLine "note" .note "note_link" .note_link) }}
+  {{ end }}
+</section>
+{{ end }}
+
+{{ end }}

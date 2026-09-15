@@ -5,7 +5,7 @@
   status: "working paper"
   venue: ""
   pdf: ""
-  link: ""
+  link: "https://www.dropbox.com/scl/fi/7ohetaw5atqvfp3c7egxz/Shrestha_WritingSample_full.pdf?rlkey=l76pngqdp9kyyaojhoou9gynr&dl=0"
   abstract: "I examine the impact of local, supply-side policies on housing outcomes, including the supply and price of low-income housing and the racial composition of towns and cities. Specifically, I investigate Massachusetts' Community Preservation Act (CPA), which allows municipalities to locally generate funds through a surcharge on property taxes, with a level of matching funds from the state government, which can then be spent on affordable housing, open land preservation, recreation, and historic conservation. Exploiting variation in adoption timing since the policy's introduction in 2000, I utilize stacked event study models to identify the causal effects of CPA adoption. My analysis indicates that while the total number of new units does not increase following CPA adoption, production of housing shifts towards higher-density and rent-stabilized units. These effects are magnified in rural and economically-disadvantaged municipalities. I find that CPA adoption also leads to an increase in the white and Asian population share, with a corresponding decrease in the Latino and Black population share. Overall, this study provides insights into the benefits and costs of policies that are adopted and implemented entirely at the municipal level."
   job_market_paper: false
   type: "working-paper"
@@ -42,9 +42,10 @@
   volume: "116"
   pages: "337–343"
   pdf: ""
-  link: ""
+  link: "https://doi.org/10.1257/pandp.20261098"
   abstract: ""
   note: "Coverage in the New York Times"
+  note_link: "https://www.nytimes.com/2026/06/02/business/economy/birthright-citizenship-ireland-germany-trump.html?unlocked_article_code=1.nFA.rNlk.n0fGAA1p87ou&smid=url-share"
   job_market_paper: false
   type: "published"
 
@@ -69,7 +70,7 @@
   volume: "25"
   pages: "2"
   pdf: ""
-  link: ""
+  link: "https://donahue.umass.edu/business-groups/economic-public-policy-research/massbenchmarks/massbenchmarks-journal-2023-v25i2"
   abstract: ""
   job_market_paper: false
   type: "published"

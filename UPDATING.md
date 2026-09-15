@@ -20,6 +20,8 @@ All changes auto-deploy within ~2 minutes of pushing to `main`. You can make eve
   pdf: ""                   # e.g. "files/your-paper.pdf"
   link: ""                  # DOI or external URL
   abstract: "One-paragraph abstract."
+  note: ""                  # optional, e.g. "Coverage in the New York Times"
+  note_link: ""             # optional, makes the note above clickable
   job_market_paper: false
   type: "working-paper"     # working-paper | work-in-progress | published
 ```
@@ -48,40 +50,13 @@ Edit `content/_index.md`. The text there is the three-paragraph bio on your home
 
 ## Update your CV
 
-Replace `static/files/cv.pdf` with the new version. Keep the same filename — the download link in the nav will keep working.
+Replace `static/files/cv.pdf` with the new version. Keep the same filename — both the "CV" nav link and the "Download CV" button on the About page open this file directly.
 
 ---
 
 ## Change your photo
 
-Replace `static/images/photo.jpg` with your new headshot. Keep the same filename. The photo displays at 160×160px, cropped to a circle — a square or portrait image works best.
-
----
-
-## Add a teaching entry
-
-Edit `data/teaching.yaml` and add an entry:
-
-```yaml
-- course: "GOV 50: Data"
-  role: "Teaching Fellow"
-  institution: "Harvard University"
-  term: "Fall 2025"
-  instructor: "Prof. Name"
-```
-
----
-
-## Add a news item
-
-Edit `data/news.yaml` and add an entry at the top:
-
-```yaml
-- date: "2025"
-  text: "Paper accepted at <em>Journal of Political Economy</em>."
-```
-
-HTML is allowed in the `text` field (e.g. `<em>` for italics).
+Replace `static/images/photo.jpg` with your new headshot. Keep the same filename. The photo displays at 220×220px as a rounded rectangle — a square or portrait image works best.
 
 ---
 
@@ -96,11 +71,13 @@ Edit `data/policy.yaml` and add an entry:
   venue: "Publication Name"
   date: "Month Year"
   link: "https://..."
+  note: "Coverage in the Boston Globe"   # optional
+  note_link: "https://..."              # optional, makes the note text above clickable
 ```
 
 ---
 
-## Change your email, tagline, or institution info
+## Change your email or institution info
 
 Edit `hugo.yaml` and update the relevant field under `params:`.
 
