@@ -27,7 +27,10 @@
       {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
     </p>
     {{ end }}
-    {{ with .abstract }}<p class="paper-abstract">{{ . }}</p>{{ end }}
+    {{ with .abstract }}
+    <button class="abstract-toggle" type="button" aria-expanded="false" onclick="var p=this.nextElementSibling; var show=p.hasAttribute('hidden'); if(show){p.removeAttribute('hidden'); this.textContent='Hide abstract'; this.setAttribute('aria-expanded','true');} else {p.setAttribute('hidden',''); this.textContent='Show abstract'; this.setAttribute('aria-expanded','false');}">Show abstract</button>
+    <p class="paper-abstract" hidden>{{ . }}</p>
+    {{ end }}
   </article>
   {{ end }}
 </div>
@@ -38,13 +41,22 @@
   <h3>Works in Progress</h3>
   {{ range $wip }}
   <article class="paper-item">
-    <span class="paper-title-plain">{{ .title }}</span>
+    {{ if .pdf }}
+      <a class="paper-title" href="{{ .pdf | relURL }}">{{ .title }}</a>
+    {{ else if .link }}
+      <a class="paper-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
+    {{ else }}
+      <span class="paper-title-plain">{{ .title }}</span>
+    {{ end }}
     {{ if .authors }}
     <p class="paper-authors">
       {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
     </p>
     {{ end }}
-    {{ with .abstract }}<p class="paper-abstract">{{ . }}</p>{{ end }}
+    {{ with .abstract }}
+    <button class="abstract-toggle" type="button" aria-expanded="false" onclick="var p=this.nextElementSibling; var show=p.hasAttribute('hidden'); if(show){p.removeAttribute('hidden'); this.textContent='Hide abstract'; this.setAttribute('aria-expanded','true');} else {p.setAttribute('hidden',''); this.textContent='Show abstract'; this.setAttribute('aria-expanded','false');}">Show abstract</button>
+    <p class="paper-abstract" hidden>{{ . }}</p>
+    {{ end }}
   </article>
   {{ end }}
 </div>
