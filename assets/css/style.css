@@ -163,7 +163,7 @@ section h2 {
 /* === Hero === */
 .hero {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--hero-gap);
   padding-top: 4rem;
   scroll-margin-top: calc(var(--nav-height) + 1rem);
