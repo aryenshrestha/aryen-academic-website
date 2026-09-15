@@ -1,0 +1,37 @@
+{{/*
+  Shared "project" entry markup for the Research page: title, authors
+  (italic), where published if any (bold), coverage note if any
+  (small, underlined via default link style), and an optional
+  abstract toggle.
+
+  Expects a dict with: title, pdf, link, authors, venue_line, note,
+  note_link, abstract.
+*/}}
+{{ $p := . }}
+<article class="paper-item">
+  {{ if $p.pdf }}
+    <a class="paper-title" href="{{ $p.pdf | relURL }}">{{ $p.title }}</a>
+  {{ else if $p.link }}
+    <a class="paper-title" href="{{ $p.link }}" target="_blank" rel="noopener">{{ $p.title }}</a>
+  {{ else }}
+    <span class="paper-title-plain">{{ $p.title }}</span>
+  {{ end }}
+  {{ if $p.authors }}
+  <p class="paper-authors">
+    {{- range $i, $a := $p.authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+  </p>
+  {{ end }}
+  {{ with $p.venue_line }}<p class="paper-venue">{{ . }}</p>{{ end }}
+  {{ with $p.note }}
+    <p class="paper-note">
+      {{ if $p.note_link }}<a href="{{ $p.note_link }}" target="_blank" rel="noopener">{{ . }}</a>{{ else }}{{ . }}{{ end }}
+    </p>
+  {{ end }}
+  {{ with $p.abstract }}
+  <button class="abstract-toggle" type="button" aria-expanded="false" onclick="var p=this.nextElementSibling; var show=p.hasAttribute('hidden'); var label=this.querySelector('.toggle-label'); if(show){p.removeAttribute('hidden'); label.textContent='Hide abstract'; this.setAttribute('aria-expanded','true');} else {p.setAttribute('hidden',''); label.textContent='Show abstract'; this.setAttribute('aria-expanded','false');}">
+    <span class="toggle-label">Show abstract</span>
+    <svg class="chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <p class="paper-abstract" hidden>{{ . }}</p>
+  {{ end }}
+</article>

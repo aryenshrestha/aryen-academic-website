@@ -14,31 +14,7 @@
 <section id="working-papers" aria-label="Working Papers">
   <h2>Working Papers</h2>
   {{ range $working }}
-  <article class="paper-item">
-    {{ if .pdf }}
-      <a class="paper-title" href="{{ .pdf | relURL }}">{{ .title }}</a>
-    {{ else if .link }}
-      <a class="paper-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
-    {{ else }}
-      <span class="paper-title-plain">{{ .title }}</span>
-    {{ end }}
-    {{ if .authors }}
-    <p class="paper-authors">
-      {{- if gt (len .authors) 1 -}}
-        ({{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}})
-      {{- else -}}
-        {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
-      {{- end -}}
-    </p>
-    {{ end }}
-    {{ with .abstract }}
-    <button class="abstract-toggle" type="button" aria-expanded="false" onclick="var p=this.nextElementSibling; var show=p.hasAttribute('hidden'); var label=this.querySelector('.toggle-label'); if(show){p.removeAttribute('hidden'); label.textContent='Hide abstract'; this.setAttribute('aria-expanded','true');} else {p.setAttribute('hidden',''); label.textContent='Show abstract'; this.setAttribute('aria-expanded','false');}">
-      <span class="toggle-label">Show abstract</span>
-      <svg class="chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <p class="paper-abstract" hidden>{{ . }}</p>
-    {{ end }}
-  </article>
+    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "abstract" .abstract) }}
   {{ end }}
 </section>
 {{ end }}
@@ -47,31 +23,7 @@
 <section id="works-in-progress" aria-label="Works in Progress">
   <h2>Works in Progress</h2>
   {{ range $wip }}
-  <article class="paper-item">
-    {{ if .pdf }}
-      <a class="paper-title" href="{{ .pdf | relURL }}">{{ .title }}</a>
-    {{ else if .link }}
-      <a class="paper-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
-    {{ else }}
-      <span class="paper-title-plain">{{ .title }}</span>
-    {{ end }}
-    {{ if .authors }}
-    <p class="paper-authors">
-      {{- if gt (len .authors) 1 -}}
-        ({{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}})
-      {{- else -}}
-        {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
-      {{- end -}}
-    </p>
-    {{ end }}
-    {{ with .abstract }}
-    <button class="abstract-toggle" type="button" aria-expanded="false" onclick="var p=this.nextElementSibling; var show=p.hasAttribute('hidden'); var label=this.querySelector('.toggle-label'); if(show){p.removeAttribute('hidden'); label.textContent='Hide abstract'; this.setAttribute('aria-expanded','true');} else {p.setAttribute('hidden',''); label.textContent='Show abstract'; this.setAttribute('aria-expanded','false');}">
-      <span class="toggle-label">Show abstract</span>
-      <svg class="chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <p class="paper-abstract" hidden>{{ . }}</p>
-    {{ end }}
-  </article>
+    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "abstract" .abstract) }}
   {{ end }}
 </section>
 {{ end }}
@@ -80,33 +32,11 @@
 <section id="publications" aria-label="Academic Publications">
   <h2>Academic Publications</h2>
   {{ range $published }}
-  {{ $p := . }}
-  <article class="paper-item">
-    {{ if .link }}
-      <a class="paper-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
-    {{ else if .pdf }}
-      <a class="paper-title" href="{{ .pdf | relURL }}">{{ .title }}</a>
-    {{ else }}
-      <span class="paper-title-plain">{{ .title }}</span>
-    {{ end }}
-    {{ if .authors }}
-    <p class="paper-authors">
-      {{- if gt (len .authors) 1 -}}
-        ({{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}})
-      {{- else -}}
-        {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
-      {{- end -}}
-    </p>
-    {{ end }}
-    <p class="paper-meta">
-      {{ .venue }}{{ with .volume }}, {{ . }}{{ end }}{{ with .pages }}: {{ . }}{{ end }}{{ with .year }}, {{ . }}{{ end }}
-    </p>
-    {{ with .note }}
-      <p class="paper-note">
-        {{ if $p.note_link }}<a href="{{ $p.note_link }}" target="_blank" rel="noopener">{{ . }}</a>{{ else }}{{ . }}{{ end }}
-      </p>
-    {{ end }}
-  </article>
+    {{ $venueLine := .venue }}
+    {{ with .volume }}{{ $venueLine = printf "%s, %v" $venueLine . }}{{ end }}
+    {{ with .pages }}{{ $venueLine = printf "%s: %v" $venueLine . }}{{ end }}
+    {{ with .year }}{{ $venueLine = printf "%s, %v" $venueLine . }}{{ end }}
+    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "venue_line" $venueLine "note" .note "note_link" .note_link) }}
   {{ end }}
 </section>
 {{ end }}
@@ -117,21 +47,9 @@
 <section id="policy" aria-label="Policy Writing">
   <h2>Policy Writing</h2>
   {{ range $policy }}
-  {{ $p := . }}
-  <div class="policy-item">
-    {{ if .link }}
-      <a class="policy-title" href="{{ .link }}" target="_blank" rel="noopener">{{ .title }}</a>
-    {{ else }}
-      <span class="policy-title-plain">{{ .title }}</span>
-    {{ end }}
-    <p class="policy-meta">
-      {{- if .authors -}}
-        {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}.&nbsp;
-      {{- end -}}
-      {{ .venue }}{{ with .date }}, {{ . }}{{ end }}
-      {{- with .note }}&nbsp;&mdash;&nbsp;<em>{{ if $p.note_link }}<a href="{{ $p.note_link }}" target="_blank" rel="noopener">{{ . }}</a>{{ else }}{{ . }}{{ end }}</em>{{ end }}
-    </p>
-  </div>
+    {{ $venueLine := .venue }}
+    {{ with .date }}{{ $venueLine = printf "%s, %v" $venueLine . }}{{ end }}
+    {{ partial "paper-item.html" (dict "title" .title "pdf" "" "link" .link "authors" .authors "venue_line" $venueLine "note" .note "note_link" .note_link) }}
   {{ end }}
 </section>
 {{ end }}

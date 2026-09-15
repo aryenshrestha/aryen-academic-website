@@ -298,12 +298,14 @@ section h2 {
 .paper-authors {
   font-size: 0.875rem;
   color: var(--color-text-muted);
+  font-style: italic;
   margin-bottom: 0.15rem;
 }
 
-.paper-meta {
+.paper-venue {
   font-size: 0.875rem;
   color: var(--color-text-muted);
+  font-weight: 600;
 }
 
 .badge {
@@ -354,19 +356,6 @@ section h2 {
   margin-top: 0.25rem;
   font-style: italic;
 }
-
-/* === Policy Writing === */
-.policy-item { margin-bottom: 1.25rem; }
-.policy-item + .policy-item { padding-top: 1.25rem; }
-.policy-title {
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--color-accent);
-  text-decoration: none;
-}
-.policy-title:hover { text-decoration: underline; }
-.policy-title-plain { font-weight: 500; font-size: 0.95rem; }
-.policy-meta { font-size: 0.875rem; color: var(--color-text-muted); margin-top: 0.1rem; }
 
 /* === Links === */
 a { color: var(--color-accent); }
