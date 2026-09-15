@@ -1,14 +1,21 @@
 {{ define "main" }}
 
-<div class="page-header">
-  <h1>{{ .Title }}</h1>
-</div>
-
 {{/* ── Papers ── */}}
 {{ $papers := hugo.Data.papers }}
 {{ $working  := where $papers "type" "working-paper" }}
 {{ $wip      := where $papers "type" "work-in-progress" }}
 {{ $published := where $papers "type" "published" }}
+{{ $policy := hugo.Data.policy }}
+
+<div class="page-header">
+  <h1>{{ .Title }}</h1>
+  <nav class="section-nav" aria-label="Research sections">
+    {{ if $working }}<a href="#working-papers">Working Papers</a>{{ end }}
+    {{ if $wip }}<a href="#works-in-progress">Works in Progress</a>{{ end }}
+    {{ if $published }}<a href="#publications">Academic Publications</a>{{ end }}
+    {{ if $policy }}<a href="#policy">Policy Writing</a>{{ end }}
+  </nav>
+</div>
 
 {{ if $working }}
 <section id="working-papers" aria-label="Working Papers">
@@ -42,7 +49,6 @@
 {{ end }}
 
 {{/* ── Policy Writing ── */}}
-{{ $policy := hugo.Data.policy }}
 {{ if $policy }}
 <section id="policy" aria-label="Policy Writing">
   <h2>Policy Writing</h2>
