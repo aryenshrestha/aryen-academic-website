@@ -2,32 +2,34 @@
 
 {{/* ── Hero ── */}}
 <section class="hero" id="about" aria-label="About">
-  <div class="hero-photo">
-    {{ if fileExists (printf "static/%s" site.Params.photo) }}
-      <img src="{{ site.Params.photo | relURL }}" alt="Photo of {{ site.Params.author }}" width="220" height="220" loading="eager">
-    {{ else }}
-      <div class="photo-placeholder" aria-label="Photo of {{ site.Params.author }}">AS</div>
-    {{ end }}
+  <div class="hero-top">
+    <div class="hero-photo">
+      {{ if fileExists (printf "static/%s" site.Params.photo) }}
+        <img src="{{ site.Params.photo | relURL }}" alt="Photo of {{ site.Params.author }}" width="220" height="220" loading="eager">
+      {{ else }}
+        <div class="photo-placeholder" aria-label="Photo of {{ site.Params.author }}">AS</div>
+      {{ end }}
+    </div>
+    <div class="hero-main">
+      <h1>{{ site.Params.author }}</h1>
+      <p class="hero-title">{{ site.Params.description }}</p>
+
+      {{/* ── Bio ── */}}
+      {{ with .Content }}
+      <div id="bio" class="bio" aria-label="Biography">
+        {{ . }}
+      </div>
+      {{ end }}
+    </div>
   </div>
-  <div class="hero-text">
-    <h1>{{ site.Params.author }}</h1>
-    <p class="hero-title">{{ site.Params.description }}</p>
 
-    {{/* ── Bio ── */}}
-    {{ with .Content }}
-    <div id="bio" class="bio" aria-label="Biography">
-      {{ . }}
-    </div>
-    {{ end }}
-
-    {{/* ── CV / Contact links ── */}}
-    <div class="hero-links">
-      <a class="btn-cv" href="{{ "cv/" | relURL }}">Download CV</a>
-      <a class="icon-link copy-email" href="mailto:{{ site.Params.email }}" data-email="{{ site.Params.email }}" aria-label="Copy email address" onclick="event.preventDefault(); navigator.clipboard.writeText(this.dataset.email); var t=this.querySelector('.copy-text'); var orig=t.textContent; t.textContent='Copied!'; clearTimeout(this._copyTimer); this._copyTimer=setTimeout(function(){ t.textContent=orig; }, 1500);">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-        <span class="copy-text">{{ site.Params.email }}</span>
-      </a>
-    </div>
+  {{/* ── CV / Contact links ── */}}
+  <div class="hero-links">
+    <a class="btn-cv" href="{{ "cv/" | relURL }}">Download CV</a>
+    <a class="icon-link copy-email" href="mailto:{{ site.Params.email }}" data-email="{{ site.Params.email }}" aria-label="Copy email address" onclick="event.preventDefault(); navigator.clipboard.writeText(this.dataset.email); var t=this.querySelector('.copy-text'); var orig=t.textContent; t.textContent='Copied!'; clearTimeout(this._copyTimer); this._copyTimer=setTimeout(function(){ t.textContent=orig; }, 1500);">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      <span class="copy-text">{{ site.Params.email }}</span>
+    </a>
   </div>
 </section>
 
