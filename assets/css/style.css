@@ -288,7 +288,7 @@ section h2 {
 .hero-links {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.6rem;
   margin-top: 1.1rem;
   width: var(--hero-photo-size);
